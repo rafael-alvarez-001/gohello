@@ -1,7 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"gohello/metrics"
+)
 
-func main(){
-	fmt.Println("Hello Ralph")
+func main() {
+	fmt.Println("Hello")
+	metrics.HelloRalph()
 }
