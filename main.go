@@ -1,13 +1,21 @@
 package main
 
 import (
-	"gohello/metrics"
+	"gohello/handlers"
 	"net/http"
+
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
-func main() {
-	metrics.HelloRalph()
+func startMetrics() {
 	http.Handle("/metrics", promhttp.Handler())
-	http.ListenAndServe(":2112", nil)
+	go http.ListenAndServe(":2112", nil)
+}
+
+func main() {
+
+	startMetrics()
+
+	http.HandleFunc("/hola", handlers.Hola)
+	http.ListenAndServe(":8080", nil)
 }
