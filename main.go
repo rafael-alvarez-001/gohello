@@ -17,6 +17,7 @@ func main() {
 	startMetrics()
 
 	http.HandleFunc("/hola", handlers.Hola)
+	http.HandleFunc("/pom", handlers.Pom)
 	http.HandleFunc("/validate", handlers.ValidateHandler)
 	http.ListenAndServe(":8080", nil)
 }

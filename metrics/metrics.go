@@ -7,16 +7,31 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promauto"
 )
 
-// Validate - Prometheus Histogram
-var Validate = promauto.NewHistogram(prometheus.HistogramOpts{
-	Name: "Validate",
-	Help: "Metric for GET calls to /validate",
+// ValidateEndpoint - Prometheus Histogram
+var ValidateEndpoint = promauto.NewHistogram(prometheus.HistogramOpts{
+	Name:        "Validate_Endpoint",
+	Help:        "Metric for GET calls to /validate",
+	ConstLabels: map[string]string{"endpoint": "/validate", "result": "endpoint"},
 })
 
 // ValidateSCRandomTimeMethod - Prometheus Histogram
 var ValidateSCRandomTimeMethod = promauto.NewHistogram(prometheus.HistogramOpts{
 	Name: "Validate_SC_RandomTimeMethod",
 	Help: "Amount of time for RandomTimeMethod() to execute",
+})
+
+// HolaEndpoint - Prometheus Histogram
+var HolaEndpoint = promauto.NewHistogram(prometheus.HistogramOpts{
+	Name:        "Hola_Endpoint",
+	Help:        "Metric for GET calls to /hola",
+	ConstLabels: map[string]string{"endpoint": "/hola", "result": "endpoint"},
+})
+
+// PomEndpoint - Prometheus Histogram
+var PomEndpoint = promauto.NewHistogram(prometheus.HistogramOpts{
+	Name:        "Pom_Endpoint",
+	Help:        "Metric for GET calls to /pom",
+	ConstLabels: map[string]string{"endpoint": "/pom", "result": "endpoint"},
 })
 
 // PromTimer - Helper method
